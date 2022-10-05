@@ -1,4 +1,4 @@
-/* Welcome to kevlu8/learncpp! 
+/* Welcome to kevlu8/learncpp!
 
 Here you will learn the basics of C++ to help you on your journey
 of development using low level languages!
@@ -10,7 +10,7 @@ functions, and types.
 Make sure to leave a star if this repo helped you!
 
 Here's how you will learn:
-1. First, in each chapter there will be a block of comments just 
+1. First, in each chapter there will be a block of comments just
 like this. They will contain the instruction and the basic knowledge
 required for the chapter.
 
@@ -40,7 +40,7 @@ Did you know that Windows is coded in a number of C-related
 languages, including: C, C#, and C++?
 
 C++ is just an addition off of the language of C, which isn't
-being updated as frequently anymore. C++ however is being 
+being updated as frequently anymore. C++ however is being
 updated every 3 years, the latest version being C++20.
 
 C++ brings OOP into the game, which C doesn't have. OOP is
@@ -59,7 +59,6 @@ execute from the function main. To declare this entry point,
 we do this: */
 
 int main() {
-
   /*
   Types
   =====
@@ -73,14 +72,14 @@ int main() {
 
   luckyNumber = 7
 
-  However in C++ you will need to state the type, then the 
+  However in C++ you will need to state the type, then the
   name, then the value. So, something like this: */
 
   int luckyNumber = 7;
 
   /*
   Also notice the semicolon. Most languages require semicolons
-  to tell lines apart from each other. It's hard at first to get 
+  to tell lines apart from each other. It's hard at first to get
   used to putting ; after each line, but it becomes muscle memory
   after a while.
 
@@ -91,23 +90,24 @@ int main() {
   double - A decimal. It can have up to 15 digits of precision.
   string - Some text. It can be a sentence, or a paragraph.
   char - A single character.
-  
+
   Now, try to create some variables on your own!
   */
-  
-  //replace with int variable
-  //replace with float variable
-  //replace with double variable
-  //replace with string variable
-  //replace with char variable
-  
+
+  // replace with int variable
+  // replace with float variable
+  // replace with double variable
+  // replace with string variable
+  // replace with char variable
+
   /*
   You may notice that the string variable is underlined in red. Why?
-  It's because string is not a built in variable for C++. To use strings,         //please correct if wrong, im not quite sure about this
-  we must include the library <iostream>, by putting #include <iostream> at
-  the top of the code. Do that, with the hashtag and the angle brackets, then
-  replace string with std::string. It should work now!
-  
+  It's because string is not a built in variable for C++. To use strings,
+  //please correct if wrong, im not quite sure about this we must include the
+  library <string>, by putting #include <string> at the top of the code. Do
+  that, with the hashtag and the angle brackets, then replace string with
+  std::string. It should work now!
+
   Functions
   =========
   Functions are blocks of code that execute when called. Using functions
@@ -118,48 +118,48 @@ int main() {
   to return anything, use void. Then you need to specify its name,
   and finally its parameters. An example of a good function would be
   something like this:
-  
+
   int add(int x, int y) {
     return x + y;
   }
-  
+
   Then you will be able to call it like this:
-  
+
   add(1, 5);
-  
+
   And it will set it's own value to 6.
-  
+
   However C++ is finicky and doesn't let us define functions inside of
-  main(), so you must define it outside of main(). 
-  
+  main(), so you must define it outside of main().
+
   Printing
   ========
   The moment you've been waiting for! We can print "Hello, World!" to
-  the console! But how do we do this? Using the <iostream> library you
-  included earlier, we can use one of it's functions, std::cout to
+  the console! But how do we do this? Using the <iostream> library,
+  we can use one of it's functions, std::cout to
   "out" text to the console. To use it, just type:
   std::cout << "Text here";
-  
+
   Now, try to print "Hello, World!" to the console. */
-  
-  //replace with hello world code
-  
+
+  // replace with hello world code
+
   /*
   If you did it successfully, congrats! You have finished the lesson
   for chapter 1, and now you can move onto the tasks.
-  
+
   Task 1: define a function called hi() to print "Hello, World!" every
   time it is called, then return 0. Then, call it 5 times.
-  
+
   Task 2: try using std::cout to print different types of variables.
   Which ones work? Which ones don't? eg:
   float x = 0.5;
   std::cout << x;
-  
+
   Task 3: try creating a function that requires 2 integer parameters,
   then returns the value of those two integers multiplied together.
   Then, print the output. */
-  
+
   return 0; /* This is just cosmetic since main() will return 0 automatically
   if execution is successful, but it's best to get into a habit of returning
   whenever there is a function. */
