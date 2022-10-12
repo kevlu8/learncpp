@@ -169,10 +169,6 @@ protected: // note: i don't use classes often, someone might want to explain how
 }; // Don't forget the semicolon!
 
 int main() {
-	//dummy values
-	int numOne = 1;
-	int numTwo = 2;
-	
 	//NAMESPACE EXAMPLE
 	int result = math::add(1, 2); //using math:: to indicate math namespace, just like std::
 	std::cout << result; //expected output: 3
