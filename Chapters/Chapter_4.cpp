@@ -12,7 +12,9 @@ In this chapter you will learn about Object Oriented
 Programming (OOP) and how it can be used in C++.
 
 Keep in mind that not all languages support object
-oriented programming, such as C.
+oriented programming, such as C. However, some of the widely
+used languages such as python, java, c#, and js as well as its
+ts improvement. 
 */
 
 #include <iostream>
@@ -22,19 +24,33 @@ oriented programming, such as C.
 OOP
 ===
 As mentioned above, OOP stands for object oriented programming.
-OOP is a kind of programming that contains objects.
+OOP is a kind of programming that utilizes objects.
 
-An object is just a type with user-defined methods and variables.
+You can think of an object as a custom data container, where you can
+store values related to each other and often, though not required,
+functions called "methods" where you utilize/modify the data of the
+object. A method is just a function belonging to an object.
+
+Say you want to implement a box that the user can resize and change
+the color of. Using just variables, you would have to store the
+x, y, width, and height values all in seperate variables or in a
+confusing array. There would be no indication that the values are
+connected to each other, and soon you would run into complicated
+names such as boxOneX if you wanted to keep track of multiple boxes.
+Hopefully by the end of this chapter, you'll be able to find an
+alternative solution to this problem.
 */
 
 /*
 Namespaces
 ==========
-A namespace is an object that can contain variables, classes,
-functions, i.e. anything! For example, you may not have thought
-much about it, but when we are taking input and sending output,
-we put std:: before the "cin" or "cout". In this case, std is
-a namespace that stands for "standard". Almost all built-in
+You can think of a namespace as a collection for a bit of everything, 
+making it great for wrapping larger concepts under a single
+banner to distinguish them. A namespace is an object that can contain 
+variables, classes, functions, i.e. anything! For example, you 
+may not have thought much about it, but when we are taking input 
+and sending output, we put std:: before the "cin" or "cout". In this case, 
+std is a namespace that stands for "standard". Almost all built-in 
 functions are put in this namespace. If you don't want to type
 std:: before everything, you can use this line of code:
 */
@@ -43,7 +59,8 @@ using namespace std;
 
 /*
 and then you can use cout and cin directly without the std::.
-While this might make coding easier for small personal tasks,
+Your code is now defaulted to using the std namespace for all
+functions. While this might make coding easier for small personal tasks,
 this is ultimately bad practice and should not be used in large
 scale projects. This is because if you use too many namespaces, 
 you could end up with multiple functions that do different things.
@@ -61,7 +78,7 @@ In order to define namespaces, you must first be outside of the
 main function. Then, you do something like this:
 */
 
-namespace math {
+namespace math { //declare new namespace
 	/*
 	Now, you can make variables, functions, whatever you want!
 	*/
@@ -82,7 +99,7 @@ namespace math {
 		return a * b;
 	}
 
-	int div(int a, int b) {
+	int div(int a, int b) { //shoving bunch of random math related dummy functions in math
 		return a / b;
 	}
 
@@ -96,16 +113,33 @@ We will test these out later in the main function.
 /*
 Structs
 =======
-
+While a namespace is great for shoving things into, you can't
+make "instances" of it. Whenever you use a namespace, you can
+only use that one object, with one copy of its values. This makes
+it pretty horrible for anything besides grouping a bunch of
+functions and constants together like the standard library does.
+A struct, however, is different. It's like a "template"
+(different than cpp templates, let's not talk about those for now)
+for your own custom data types, that you can later use to type a
+variable.
 */
 
-struct coordinate {
-	int x, y;
+struct coordinate { //declare new struct
+	int x; //defines coordinate as a "data type" that holds two ints
+	int y;
+	
+	void set(int x, int y) {
+		this.x = x; //"this" refers to the instance that is calling the set method
+		this.y = y; //you can access the values of the instance by using '.'
+	}
 	void moveX(int a) {
 		x += a;
 	}
 	void moveY(int a) {
 		y += a;
+	}
+	void show() {
+		std::cout << "x: " << this.x << "; y: " << this.y << endl; 
 	}
 }; // Don't forget the semicolon!
 
@@ -135,6 +169,35 @@ protected: // note: i don't use classes often, someone might want to explain how
 }; // Don't forget the semicolon!
 
 int main() {
+	//dummy values
+	int numOne = 1;
+	int numTwo = 2;
+	
+	//NAMESPACE EXAMPLE
+	int result = math::add(1, 2); //using math:: to indicate math namespace, just like std::
+	std::cout << result; //expected output: 3
+	
+	using namespace math;
+	result = sub(1, 2); //no math:: is necassary when using namespace math
+	std::cout << result; //notice how we can still use other namespaces if we specify that we're using them,
+			     //but as a rule you probably shouldn't do this in case you forget and it creates a bug you can't find
+	
+	//STRUCT EXAMPLE
+	int coordX; //this is how we would define a coordinate system without structs
+	int coordY;
+	
+	coordinate coords; //with the coordinate struct, you can use it as if it were a data type like int
+	coordinate COORDS; //you can also make two of them (notice case sensitivity of names)
+	
+	coords.x = 0; //x and y are both grouped under the variable coords
+	coords.y = 0;
+	
+	COORDS.set(1, 1); //you can also set both using the method we implemented earlier to make our lives easier
+			  //notice how you must call the method from an instance of the struct and not the struct itself
+			  //these methods has access to the values of the instance
+	
+	coords.show(); //expected output: x: 0; y: 0
+	COORDS.show(); //		  x: 1; y: 1
 	
 	/*
 	If you did it successfully, congrats! You have finished the lesson
