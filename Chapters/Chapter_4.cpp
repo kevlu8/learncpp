@@ -5,6 +5,7 @@
 - namespaces
 - structs
 - classes
+- inheritance
 */
 
 /*
@@ -129,8 +130,8 @@ struct coordinate { //declare new struct
 	int y;
 	
 	void set(int x, int y) {
-		this.x = x; //"this" refers to the instance that is calling the set method
-		this.y = y; //you can access the values of the instance by using '.'
+		this->x = x; //"this" is a pointer to the instance that is calling the set method
+		this->y = y; //you can access the values of the instance by using '->' if the variable is a pointer, or '.' if the variable is an object itself
 	}
 	void moveX(int a) {
 		x += a;
@@ -146,24 +147,57 @@ struct coordinate { //declare new struct
 /*
 Classes
 =======
-
+From my experience, classes are very similar to structs. The only difference
+is that classes have the option to prevent code from using its values/methods
+while structs defaults to having everything be public.
 */
 
 class World {
 private:
 	/*
-	Variables and functions here are only accessible inside of the
-	class. This means that you cannot change variables or call 
-	functions inside of here unless there is a function to change 
-	them in public.
+	Variables and functions here are only accessible by method
+	calls of the class internally, meaning you can't use them
+	with the standard object.variable or object.function() 
+	notation. This prevents another user (aka future you) from
+	doing something stupid with them when they're only meant
+	to be used internally. 
 	*/
-	long long populationCount = 8000000000;
+	long long populationCount;
 public:
 	/*
-	Variables and functions here are accessible everywhere.
+	Variables and functions here are accessible everywhere. The
+	methods in here arealmost like an api for your object in the 
+	sense that it contains simplified functions to manipulate
+	and use your instances. Some common methods included here
+	are 'set' and 'get' for private or protected variables. The reason
+	set and get are used instead of just shoving the variable in public
+	is that you can set certain restrictions inside of the set method.
+	For example, if populationCount was public then during runtime
+	it could manage to get below zero, which we know should
+	be impossible and would likely break many things, all in all 
+	not ideal. 
 	*/
 	long long getPopulation() {
 		return populationCount;
+	}
+	
+	bool setPopulation(long long n) {
+		if (n >= 0) {
+			this->populationCount = n; //notice how even though 'this' is a pointer, populationCount is not meaning you can straight up change the value
+			return true;
+		} 
+		return false;	
+	}
+	
+	/*
+	since classes are very similar to structs, I think it'd be a good idea to introduce 
+	the concept of constructors here to balance the learning load. Constructors, in any
+	language, is the method called when you first create a new instance of an object
+	using a struct or a class. In c++, the syntax is to drop the return type and write
+	the name of the class as the name of the function. 
+	*/
+	World() { 
+		this->populationCount = 8000000000;
 	}
 protected: // note: i don't use classes often, someone might want to explain how this works
 }; // Don't forget the semicolon!
