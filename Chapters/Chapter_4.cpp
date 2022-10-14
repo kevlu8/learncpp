@@ -100,7 +100,7 @@ namespace math { //declare new namespace
 		return a * b;
 	}
 
-	int div(int a, int b) { //shoving bunch of random math related dummy functions in math
+	int div(int a, int b) { // shoving bunch of random math related dummy functions in math
 		return a / b;
 	}
 
@@ -125,13 +125,13 @@ for your own custom data types, that you can later use to type a
 variable.
 */
 
-struct coordinate { //declare new struct
-	int x; //defines coordinate as a "data type" that holds two ints
+struct coordinate { // declare new struct
+	int x; // defines coordinate as a "data type" that holds two ints
 	int y;
 	
 	void set(int x, int y) {
-		this->x = x; //"this" is a pointer to the instance that is calling the set method
-		this->y = y; //you can access the values of the instance by using '->' if the variable is a pointer, or '.' if the variable is an object itself
+		this->x = x; // "this" is a pointer to the instance that is calling the set method
+		this->y = y; // you can access the values of the instance by using '->' if the variable is a pointer, or '.' if the variable is an object itself
 	}
 	void moveX(int a) {
 		x += a;
@@ -152,7 +152,7 @@ is that classes have the option to prevent code from using its values/methods
 while structs defaults to having everything be public.
 */
 
-class World {
+class Coordinate {
 private:
 	/*
 	Variables and functions here are only accessible by method
@@ -162,7 +162,8 @@ private:
 	doing something stupid with them when they're only meant
 	to be used internally. 
 	*/
-	long long populationCount;
+	int x;
+	int y;
 public:
 	/*
 	Variables and functions here are accessible everywhere. The
@@ -177,13 +178,17 @@ public:
 	be impossible and would likely break many things, all in all 
 	not ideal. 
 	*/
-	long long getPopulation() {
-		return populationCount;
+	int getX() {
+		return this->x;
 	}
 	
-	bool setPopulation(long long n) {
-		if (n >= 0) {
-			this->populationCount = n; //notice how even though 'this' is a pointer, populationCount is not meaning you can straight up change the value
+	int getY() {
+		return this->y;
+	}
+ 	
+	bool setCoords(int x, int y) {
+		if (x >= 0) {
+			this->populationCount = n; // notice how even though 'this' is a pointer, populationCount is not meaning you can straight up change the value
 			return true;
 		} 
 		return false;	
