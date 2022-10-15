@@ -164,6 +164,11 @@ private:
 	*/
 	int x;
 	int y;
+	int secValue;
+	int someFunc() {
+		int value = this.x / (this->x - this->y); //would break if this->x and this->y are the same
+		return value;
+	}
 public:
 	/*
 	Variables and functions here are accessible everywhere. The
@@ -173,21 +178,22 @@ public:
 	are 'set' and 'get' for private or protected variables. The reason
 	set and get are used instead of just shoving the variable in public
 	is that you can set certain restrictions inside of the set method.
-	For example, if populationCount was public then during runtime
-	it could manage to get below zero, which we know should
-	be impossible and would likely break many things, all in all 
-	not ideal. 
+	For example, if x and y was public then during runtime
+	it could manage to get to be illegal values that would break stuff, 
+	which we know should be impossible and would all in all not ideal. 
 	*/
 	int getX() {
+		this->someFunc();
 		return this->x;
 	}
 	
 	int getY() {
+		this->someFunc();
 		return this->y;
 	}
  	
 	bool setCoords(int x, int y) {
-		if (x >= 0) {
+		if (x != y) { //prevent user from being dumb and dividing by zero later
 			this->populationCount = n; // notice how even though 'this' is a pointer, populationCount is not meaning you can straight up change the value
 			return true;
 		} 
