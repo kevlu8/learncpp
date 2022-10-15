@@ -166,7 +166,7 @@ private:
 	int y;
 	int secValue;
 	int someFunc() {
-		int value = this.x / (this->x - this->y); //would break if this->x and this->y are the same
+		int value = this.x / (this->x - this->y); // would break if this->x and this->y are the same
 		return value;
 	}
 public:
@@ -193,7 +193,7 @@ public:
 	}
  	
 	bool setCoords(int x, int y) {
-		if (x != y) { //prevent user from being dumb and dividing by zero later
+		if (x != y) { // prevent user from being dumb and dividing by zero later
 			this->populationCount = n; // notice how even though 'this' is a pointer, populationCount is not meaning you can straight up change the value
 			return true;
 		} 
@@ -214,31 +214,31 @@ protected: // note: i don't use classes often, someone might want to explain how
 }; // Don't forget the semicolon!
 
 int main() {
-	//NAMESPACE EXAMPLE
-	int result = math::add(1, 2); //using math:: to indicate math namespace, just like std::
-	std::cout << result; //expected output: 3
+	// NAMESPACE EXAMPLE
+	int result = math::add(1, 2); // using math:: to indicate math namespace, just like std::
+	std::cout << result; // expected output: 3
 	
 	using namespace math;
-	result = sub(1, 2); //no math:: is necassary when using namespace math
-	std::cout << result; //notice how we can still use other namespaces if we specify that we're using them,
-			     //but as a rule you probably shouldn't do this in case you forget and it creates a bug you can't find
+	result = sub(1, 2); // no math:: is necassary when using namespace math
+	std::cout << result; // notice how we can still use other namespaces if we specify that we're using them,
+			     // but as a rule you probably shouldn't do this in case you forget and it creates a bug you can't find
 	
-	//STRUCT EXAMPLE
-	int coordX; //this is how we would define a coordinate system without structs
+	// STRUCT EXAMPLE
+	int coordX; // this is how we would define a coordinate system without structs
 	int coordY;
 	
-	coordinate coords; //with the coordinate struct, you can use it as if it were a data type like int
-	coordinate COORDS; //you can also make two of them (notice case sensitivity of names)
+	coordinate coords; // with the coordinate struct, you can use it as if it were a data type like int
+	coordinate COORDS; // you can also make two of them (notice case sensitivity of names)
 	
-	coords.x = 0; //x and y are both grouped under the variable coords
+	coords.x = 0; // x and y are both grouped under the variable coords
 	coords.y = 0;
 	
-	COORDS.set(1, 1); //you can also set both using the method we implemented earlier to make our lives easier
-			  //notice how you must call the method from an instance of the struct and not the struct itself
-			  //these methods has access to the values of the instance
+	COORDS.set(1, 1); // you can also set both using the method we implemented earlier to make our lives easier
+			  // notice how you must call the method from an instance of the struct and not the struct itself
+			  // these methods has access to the values of the instance
 	
-	coords.show(); //expected output: x: 0; y: 0
-	COORDS.show(); //		  x: 1; y: 1
+	coords.show(); // expected output: x: 0; y: 0
+	COORDS.show(); //		   x: 1; y: 1
 	
 	/*
 	If you did it successfully, congrats! You have finished the lesson
