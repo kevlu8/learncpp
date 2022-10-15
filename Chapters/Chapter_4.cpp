@@ -125,7 +125,7 @@ for your own custom data types, that you can later use to type a
 variable.
 */
 
-struct coordinate { // Declare new struct
+typedef struct coordinate { // Declare new struct
 	int x; // Defines coordinate as a "data type" that holds two ints
 	int y;
 	
@@ -142,7 +142,7 @@ struct coordinate { // Declare new struct
 	void show() {
 		std::cout << "x: " << this.x << "; y: " << this.y << endl; 
 	}
-}; // Don't forget the semicolon!
+} coordinate; // Don't forget the semicolon!
 
 /*
 Classes
