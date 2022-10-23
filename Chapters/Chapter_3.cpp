@@ -16,6 +16,7 @@ notorious errors.
 */
 
 #include <iostream>
+#include <memory>
 #include <string>
 
 /* Don't worry about these functions, they will be useful
@@ -148,6 +149,61 @@ int main() {
   */
 
   std::cout << **pp << std::endl;
+
+  /* You must be aware of possible memory leaks using objects in heap memory. So
+     if you create a pointer to an new object you have to delete the object
+		 if it is not used any longer.
+	*/
+
+  std::string *heapString = new std::string("My Heapstring");
+  std::cout << *heapString << std::endl;
+  
+	/*
+		you need to delete the string object heapString after usage! Otherwise a 
+		memory leak occurs:
+    
+		valgring analysis output (excerpt):
+		...
+    ==32723== HEAP SUMMARY:
+    ==32723==     in use at exit: 32 bytes in 1 blocks
+    ==32723==   total heap usage: 4 allocs, 3 frees, 74,784 bytes allocated
+    ==32723==
+    ==32723== 32 bytes in 1 blocks are definitely lost in loss record 1 of 1
+    ...
+  */
+  delete heapString;
+
+  /* to avoid memory leaks you should not use raw pointers.
+     modern c++ comes with smart pointers
+
+	  	- unique_ptr: owns and manages another object through a pointer and 
+										disposes of that object when the unique_ptr goes out of scope
+      - shared_ptr: retains shared ownership of an object through a pointer.
+										Several shared_ptr objects may own the same object. The
+                    object is destroyed and its memory deallocated
+		  - weak_ptr:   holds a non-owning ("weak") reference to an object that is 
+				            managed by std::shared_ptr. It must be converted to 
+										std::shared_ptr in order to access the referenced object
+										(more advanced topic)
+
+			To use smart pointers you must include the memory header.
+      For following examples you must compile with option --std=c++14
+			Following examples covers only some basics about creating smart pointers.
+			A complete coverage of this topic may follow as a specific chapter.
+
+  */
+
+  /*unique_ptr example*/
+  auto uniqString = std::make_unique<std::string>("A unique string");
+  std::cout << "unique_ptr example: " << *uniqString << std::endl;
+
+  /*shared_ptr example
+	
+		For more complex examples of shared_ptr have a look at
+		https://en.cppreference.com/w/cpp/memory/shared_ptr
+	*/
+  auto sharedString = std::make_unique<std::string>("A shared string");
+  std::cout << "shared_ptr example: " << *sharedString << std::endl;
 
   /*
   References
