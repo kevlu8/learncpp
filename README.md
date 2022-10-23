@@ -3,7 +3,7 @@ Learn the basics of C++ while getting Pull Requests towards Hacktoberfest!
 This will only teach the basics of C++, such as variables, types, functions, and operators.
 
 # Contributing
-Contributions are welcome! Make sure that the formatting is done in **tabs** and all comments except for `// replace with code` should use `/*` and `*/`. 
+Contributions are welcome! Make sure that the formatting is done in **tabs** and all comments except for `// replace with code` or `// This explains what the line does` should use `/*` and `*/`. 
 
 Looking for:
 
