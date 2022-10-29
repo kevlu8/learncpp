@@ -194,7 +194,8 @@ public:
  	
 	bool setCoords(int x, int y) {
 		if (x != y) { // Prevent user from being dumb and dividing by zero later
-			this->populationCount = n; // Notice how even though 'this' is a pointer, populationCount is not meaning you can straight up change the value
+			this->x = x; // Notice how even though 'this' is a pointer, x is not meaning you can straight up change the value
+			this->y = y
 			return true;
 		} 
 		return false;	
@@ -207,11 +208,49 @@ public:
 	using a struct or a class. In c++, the syntax is to drop the return type and write
 	the name of the class as the name of the function. 
 	*/
-	World() { 
+	Coordinate() { 
 		this->populationCount = 8000000000;
 	}
-protected: // Note: I don't use classes often, someone might want to explain how this works
+protected: 
+	/*
+	Variables and functions here are only accessible by method
+	calls of the class internally, like private. However, it's
+	also accessable by "children" of the class. When you define
+	a new class, you don't have to necassarily build it from 
+	scratch if it shares similar code with other classes. You 
+	can "inherit" all of its methods and variables, making it a
+	"child" of the "parent" class. Stuff under protected and public
+	are inherited, while stuff from private will not.
+	*/
+	
+	
 }; // Don't forget the semicolon!
+
+class CoordinateChild : public Coordinate { // cpp syntax for inheritance:
+					    // class {childClass} : {inheritanceType} {parentClass}
+	/*
+	There are three types of inheritance in cpp: public;
+	private; protected. These inheritance types determine
+	where (i.e. public, private, protected) the inherited
+	methods and variables go in the child class based on
+	where they were in the parent class.
+	
+	Vertical labels: type of inheritance
+	Horizontal labels: where it was in parent
+	Value in grid: where it ends up in child
+			||    Public	|| Protected		
+	===============================================
+	Public		||    Public	||   Protected
+	Protected	||   Protected	||   Protected
+	Private		||    Private	||    Private
+	*/
+	
+	// you can also add more methods here, it will be accessable by child but not by parentt
+	void newMethod() {
+		std::cout << "heyy";
+		return;
+	}
+}
 
 int main() {
 	// NAMESPACE EXAMPLE
