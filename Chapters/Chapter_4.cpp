@@ -13,9 +13,10 @@ In this chapter you will learn about Object Oriented
 Programming (OOP) and how it can be used in C++.
 
 Keep in mind that not all languages support object
-oriented programming, such as C. However, some of the widely
+oriented programming. However, some of the widely
 used languages such as python, java, c#, and js as well as its
-ts improvement. 
+ts improvement. And even older languages like c support object oriented programming
+even if there do not exist classes.
 */
 
 #include <iostream>
@@ -48,8 +49,9 @@ Namespaces
 You can think of a namespace as a collection for a bit of everything, 
 making it great for wrapping larger concepts under a single
 banner to distinguish them. A namespace is an object that can contain 
-variables, classes, functions, i.e. anything! For example, you 
-may not have thought much about it, but when we are taking input 
+variables, classes, functions, i.e. anything! The big benefit of using
+namespaces is, they prevent naming conflicts.
+For example, you may not have thought much about it, but when we are taking input 
 and sending output, we put std:: before the "cin" or "cout". In this case, 
 std is a namespace that stands for "standard". Almost all built-in 
 functions are put in this namespace. If you don't want to type
@@ -72,6 +74,7 @@ and returns a string with the result (in hexadecimal). So, if
 you use both namespace a and b, you won't be able to differentiate
 between a::addstr(x, y) and b::addstr(x, y) as both will be
 represented as addstr(x, y) even though both do different things.
+You are running into naming conflicts.
 */
 
 /*
