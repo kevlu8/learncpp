@@ -12,8 +12,6 @@ Looking for:
 
 Future chapter plans:
 
-4: Namespaces, structs, classes (OOP)
-
 5: Common STL containers (vector, set, map, etc)
 
 # Pull Requests
